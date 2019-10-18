@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace StutterMosher.WinForms
@@ -34,18 +36,23 @@ namespace StutterMosher.WinForms
 
         private async void GoButton_Click(object sender, EventArgs e)
         {
-            using (FileStream inputFile = File.OpenRead(InputFileDialog.FileName))
+            GoButton.Enabled = false;
+            await Task.Factory.StartNew(ConvertInputFile);
+
+            using (FileStream inputFile = File.OpenRead("input.avi"))
             using (FileStream outputFile = File.Create(OutputFileDialog.FileName))
             {
                 Mosher mosher = new Mosher(inputFile, outputFile);
                 mosher.ProgressChanged += Mosher_ProgressChanged;
                 await mosher.MoshAsync((int)MoshPicker.Value);
                 MessageBox.Show(
-                    "Moshing Completed Successfully!", "Success!", 
+                    "Moshing Completed Successfully!", "Success!",
                     MessageBoxButtons.OK, MessageBoxIcon.Information
                     );
                 ProgressBar.Value = 0;
             }
+            File.Delete("input.avi");
+            GoButton.Enabled = true;
         }
 
         private void Mosher_ProgressChanged(object sender, Mosher.ProgressEventArgs e)
@@ -54,6 +61,15 @@ namespace StutterMosher.WinForms
             {
                 ProgressBar.Value = (int)(100 * e.Progress);
             }));
+        }
+
+        private void ConvertInputFile()
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = "ffmpeg.exe",
+                Arguments = $"-i \"{InputFileDialog.FileName}\" \"input.avi\""
+            }).WaitForExit();
         }
     }
 }

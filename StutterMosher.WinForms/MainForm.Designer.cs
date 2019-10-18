@@ -108,7 +108,7 @@
             // InputFileDialog
             // 
             this.InputFileDialog.DefaultExt = "avi";
-            this.InputFileDialog.Filter = "AVI Video Files | *.avi";
+            this.InputFileDialog.Filter = "MP4 Video Files | *.mp4";
             this.InputFileDialog.RestoreDirectory = true;
             this.InputFileDialog.SupportMultiDottedExtensions = true;
             this.InputFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.InputFileDialog_FileOk);
