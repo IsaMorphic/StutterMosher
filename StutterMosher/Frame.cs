@@ -55,25 +55,17 @@ namespace StutterMosher
             // Read data until end-of-frame is found
             while (data.IndexOf(EndOfFrame) == -1)
             {
-                if (stream.Read(buffer, 0, buffer.Length) < buffer.Length)
-                {
-                    break;
-                }
-                else data.AddRange(buffer);
+                if (stream.Read(buffer, 0, buffer.Length) > 0)
+                    data.AddRange(buffer);
+                else return null;
             }
-
-            if (!data.Any())
-                return null;
 
             // Trim extra data
             int index = data.IndexOf(EndOfFrame);
             data.RemoveRange(index, data.Count - index);
             stream.Seek(streamPos + data.Count + 4, SeekOrigin.Begin);
 
-            if (data.Any())
-                return new Frame(data);
-            else
-                return null;
+            return new Frame(data);
         }
     }
 }

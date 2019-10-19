@@ -45,13 +45,17 @@ namespace StutterMosher.WinForms
                 Mosher mosher = new Mosher(inputFile, outputFile);
                 mosher.ProgressChanged += Mosher_ProgressChanged;
                 await mosher.MoshAsync((int)MoshPicker.Value);
-                MessageBox.Show(
-                    "Moshing Completed Successfully!", "Success!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information
-                    );
-                ProgressBar.Value = 0;
             }
-            File.Delete("input.avi");
+
+            DialogResult msgResult = MessageBox.Show(
+                    "Moshing Completed Successfully! Would you like to view the results?", "Success!",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Information
+                    );
+
+            if(msgResult == DialogResult.Yes)
+                Process.Start(OutputFileDialog.FileName);
+
+            ProgressBar.Value = 0;
             GoButton.Enabled = true;
         }
 
@@ -68,7 +72,7 @@ namespace StutterMosher.WinForms
             Process.Start(new ProcessStartInfo
             {
                 FileName = "ffmpeg.exe",
-                Arguments = $"-i \"{InputFileDialog.FileName}\" \"input.avi\""
+                Arguments = $"-y -i \"{InputFileDialog.FileName}\" \"input.avi\""
             }).WaitForExit();
         }
     }
