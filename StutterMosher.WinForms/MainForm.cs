@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -72,7 +72,7 @@ namespace StutterMosher.WinForms
             Process.Start(new ProcessStartInfo
             {
                 FileName = "ffmpeg.exe",
-                Arguments = $"-y -i \"{InputFileDialog.FileName}\" \"input.avi\""
+                Arguments = $"-y -i \"{InputFileDialog.FileName}\" -ss {StartTime.Text} -to {EndTime.Text} \"input.avi\""
             }).WaitForExit();
         }
     }

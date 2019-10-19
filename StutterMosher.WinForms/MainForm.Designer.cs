@@ -1,4 +1,4 @@
-﻿namespace StutterMosher.WinForms
+namespace StutterMosher.WinForms
 {
     partial class MainForm
     {
@@ -30,6 +30,9 @@
         {
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label label2;
+            System.Windows.Forms.Label label3;
+            System.Windows.Forms.Label label4;
+            System.Windows.Forms.Label label5;
             this.InputFileTextBox = new System.Windows.Forms.TextBox();
             this.InputFileButton = new System.Windows.Forms.Button();
             this.OutputFileButton = new System.Windows.Forms.Button();
@@ -38,10 +41,14 @@
             this.OutputFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.GoButton = new System.Windows.Forms.Button();
             this.MoshPicker = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
             this.ProgressBar = new System.Windows.Forms.ProgressBar();
+            this.StartTime = new System.Windows.Forms.MaskedTextBox();
+            this.EndTime = new System.Windows.Forms.MaskedTextBox();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.MoshPicker)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,6 +69,36 @@
             label2.Size = new System.Drawing.Size(77, 17);
             label2.TabIndex = 5;
             label2.Text = "Output File";
+            // 
+            // label3
+            // 
+            label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(184, 187);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(98, 17);
+            label3.TabIndex = 8;
+            label3.Text = "Mosh Amount:";
+            // 
+            // label4
+            // 
+            label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(7, 136);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(77, 17);
+            label4.TabIndex = 12;
+            label4.Text = "Start Time:";
+            // 
+            // label5
+            // 
+            label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(7, 164);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(72, 17);
+            label5.TabIndex = 14;
+            label5.Text = "End Time:";
             // 
             // InputFileTextBox
             // 
@@ -123,8 +160,7 @@
             // 
             // GoButton
             // 
-            this.GoButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.GoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.GoButton.Location = new System.Drawing.Point(401, 184);
             this.GoButton.Name = "GoButton";
             this.GoButton.Size = new System.Drawing.Size(75, 23);
@@ -135,8 +171,7 @@
             // 
             // MoshPicker
             // 
-            this.MoshPicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MoshPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.MoshPicker.Location = new System.Drawing.Point(291, 185);
             this.MoshPicker.Maximum = new decimal(new int[] {
             120,
@@ -157,17 +192,6 @@
             0,
             0});
             // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(184, 187);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 17);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Mosh Amount:";
-            // 
             // ProgressBar
             // 
             this.ProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -178,13 +202,39 @@
             this.ProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.ProgressBar.TabIndex = 9;
             // 
+            // StartTime
+            // 
+            this.StartTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.StartTime.Location = new System.Drawing.Point(90, 131);
+            this.StartTime.Mask = "00:00:00.000";
+            this.StartTime.Name = "StartTime";
+            this.StartTime.Size = new System.Drawing.Size(88, 22);
+            this.StartTime.TabIndex = 11;
+            this.StartTime.Text = "000000000";
+            // 
+            // EndTime
+            // 
+            this.EndTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.EndTime.Location = new System.Drawing.Point(90, 159);
+            this.EndTime.Mask = "00:00:00.000";
+            this.EndTime.Name = "EndTime";
+            this.EndTime.Size = new System.Drawing.Size(88, 22);
+            this.EndTime.TabIndex = 13;
+            this.EndTime.Text = "000000000";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(488, 219);
+            this.Controls.Add(label5);
+            this.Controls.Add(this.EndTime);
+            this.Controls.Add(label4);
+            this.Controls.Add(this.StartTime);
             this.Controls.Add(this.ProgressBar);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(label3);
             this.Controls.Add(this.MoshPicker);
             this.Controls.Add(this.GoButton);
             this.Controls.Add(label2);
@@ -211,8 +261,9 @@
         private System.Windows.Forms.SaveFileDialog OutputFileDialog;
         private System.Windows.Forms.Button GoButton;
         private System.Windows.Forms.NumericUpDown MoshPicker;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ProgressBar ProgressBar;
+        private System.Windows.Forms.MaskedTextBox StartTime;
+        private System.Windows.Forms.MaskedTextBox EndTime;
     }
 }
 
