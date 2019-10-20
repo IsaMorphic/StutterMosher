@@ -144,7 +144,7 @@ namespace StutterMosher.WinForms
             // 
             // InputFileDialog
             // 
-            this.InputFileDialog.DefaultExt = "avi";
+            this.InputFileDialog.DefaultExt = "mp4";
             this.InputFileDialog.Filter = "MP4 Video Files | *.mp4";
             this.InputFileDialog.RestoreDirectory = true;
             this.InputFileDialog.SupportMultiDottedExtensions = true;
@@ -152,8 +152,8 @@ namespace StutterMosher.WinForms
             // 
             // OutputFileDialog
             // 
-            this.OutputFileDialog.DefaultExt = "avi";
-            this.OutputFileDialog.Filter = "AVI Video Files | *.avi";
+            this.OutputFileDialog.DefaultExt = "mp4";
+            this.OutputFileDialog.Filter = "MP4 Video Files | *.mp4";
             this.OutputFileDialog.RestoreDirectory = true;
             this.OutputFileDialog.SupportMultiDottedExtensions = true;
             this.OutputFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.OutputFileDialog_FileOk);
@@ -206,6 +206,7 @@ namespace StutterMosher.WinForms
             // 
             this.StartTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.StartTime.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Overwrite;
             this.StartTime.Location = new System.Drawing.Point(90, 131);
             this.StartTime.Mask = "00:00:00.000";
             this.StartTime.Name = "StartTime";
@@ -217,6 +218,7 @@ namespace StutterMosher.WinForms
             // 
             this.EndTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.EndTime.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Overwrite;
             this.EndTime.Location = new System.Drawing.Point(90, 159);
             this.EndTime.Mask = "00:00:00.000";
             this.EndTime.Name = "EndTime";
