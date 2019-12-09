@@ -75,10 +75,6 @@ namespace StutterMosher.WinForms
             else
                 OperationFailed();
 
-            OutputFileSelected = false;
-            OutputFileDialog.FileName = null;
-            OutputFileTextBox.Text = null;
-
             ProgressBar.Value = 0;
             GoButton.Enabled = true;
         }
